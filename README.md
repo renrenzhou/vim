@@ -1,4 +1,4 @@
-# USEAGE
+# USAGE
 execute
 ```shell
 ./install.sh
