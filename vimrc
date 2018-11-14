@@ -36,8 +36,8 @@ if has('win32')
     "set guifont=Liberation Mono for Powerline:h10:cANSI
 elseif has('unix')
 	"set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
-	set guifont=Source\ Code\ Pro\ for\ Powerline\ 12
-	set linespace=-1
+	set guifont=Source\ Code\ Pro\ for\ Powerline\ 11
+	set linespace=0
     "set guifont=Liberation\ Mono\ for\ Powerline\ 10
 endif
 
@@ -78,9 +78,7 @@ map <M-v> :vsplit<CR>
 
 nmap fw <Plug>(choosewin)
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"			plugin list
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"===================================================================plugin list
 " Specify a directory for plugins 
 call plug#begin('~/.vim/plugged')
 Plug 'Lokaltog/vim-easymotion' 
@@ -148,39 +146,21 @@ Plug 'Yggdroot/LeaderF'
 call plug#end()
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"			easymotion plugin
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"=============================================================easymotion plugin
 let g:EasyMotion_leader_key = 'f' "修改leader键
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"			theme
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"=========================================================================theme
 "set background=dark
 "colorscheme molokai                 " 设置配色方案
 set background=light
 colorscheme solarized
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 			ctrlp	
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ctrlp_map = 'mm'
-let g:ctrlp_cmd = 'CtrlP'
-"let ctrlp use the same dir with nerdtree
-let g:NERDTreeChDirMode = 2 
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-let g:ctrlp_working_path_mode = 'rw' 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"				airline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"=======================================================================airline
 set laststatus=2   "总是显示状态栏
 let g:airline_powerline_fonts = 1
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"			NerdTree plugin
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"===============================================================NerdTree plugin
 map <F3> :NERDTreeToggle<CR>    "打开树状文件目录
 let NERDTreeDirArrows = 1
 "autocmd BufRead * 25vsp ./     "自动运行NERDTree插件
@@ -254,22 +234,31 @@ let g:ycm_warning_symbol = '>*'
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nmap <F4> :YcmDiags<CR
+nmap <F4> :YcmDiags<CR>
 
 hi Normal  ctermfg=252 ctermbg=none
 
 
 "==========================================================================ale
-let g:ale_sign_column_always = 1
+let g:ale_sign_column_always = 0
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
-let &runtimepath.=',~/.vim/bundle/ale'
-
-
-
-"set background=dark
-"set background=light
-"colorscheme solarized                 " 设置配色方案
-
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_error = 'x'
+let g:ale_sign_warning = '!'
+"nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+"nmap <silent> <C-j> <Plug>(ale_next_wrap)
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+":cc    "            显示详细错误信息 ( :help :cc )
+":cp    "            跳到上一个错误 ( :help :cp )
+nmap <C-k> :cp<CR>
+"            跳到下一个错误 ( :help :cn )
+nmap <C-j> :cn<CR>
+":cl    "            列出所有错误 ( :help :cl )
+":cw    "            如果有错误列表，则打开quickfix窗口 ( :help :cw )
+":col   "            到前一个旧的错误列表 ( :help :col )
+":cnew  "            到后一个较新的错误列表 ( :help :cnew )
+let &runtimepath.=',~/.vim/plugged/ale'
 
 "===================================================================toggle list
 let g:lt_height = 5
@@ -290,4 +279,5 @@ nmap ff :LeaderfFile<CR>
 nmap fg :LeaderfLineAll<CR>
 let g:Lf_WorkingDirectoryMode = 'Ac'
 let g:Lf_RootMarkers = ['.project']
+
 
