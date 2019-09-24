@@ -1,4 +1,6 @@
 
+"help manual_doc
+
 set nocompatible
 
 "disable tool bar
