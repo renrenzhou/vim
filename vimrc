@@ -283,3 +283,7 @@ let g:Lf_WorkingDirectoryMode = 'Ac'
 let g:Lf_RootMarkers = ['.project']
 
 
+""
+hi Normal guifg=#2E3436 guibg=#EDEDED
+hi CursorLine guibg=#4A90D9 guifg=#FFFFFF
+set ruler
