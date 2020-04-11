@@ -1,6 +1,10 @@
 
 "help manual_doc
 
+"no bell in vim
+set noeb
+"no bell in gvim
+set vb t_vb=
 set nocompatible
 
 "disable tool bar
@@ -10,7 +14,7 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,chinese,cp936
-set cc=80
+"set cc=80
 
 language messages zh_CN.utf-8
 
@@ -25,7 +29,7 @@ set shiftwidth=4 "indent space num
 "set expandtab 
 
 "set window size
-set lines=40 columns=100
+set lines=35 columns=120
 
 "set line number
 set rnu
@@ -38,7 +42,8 @@ if has('win32')
     "set guifont=Liberation Mono for Powerline:h10:cANSI
 elseif has('unix')
 	"set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
-	set guifont=Source\ Code\ Pro\ for\ Powerline\ 11
+	"set guifont=Source\ Code\ Pro\ for\ Powerline\ 11
+	set guifont=Source\ Code\ Pro\ 11
 	set linespace=0
     "set guifont=Liberation\ Mono\ for\ Powerline\ 10
 endif
@@ -95,7 +100,7 @@ Plug 'Lokaltog/vim-easymotion'
 "bootom line of status of editing 
 Plug 'bling/vim-airline'
 "font of status line
-Plug 'Lokaltog/powerline-fonts'
+"Plug 'Lokaltog/powerline-fonts'
 "file tree
 Plug 'scrooloose/nerdtree'
 "show tags of file
@@ -132,14 +137,14 @@ Plug 'scrooloose/nerdcommenter'
 
 "Plug 'MarcWeber/vim-addon-manager'
 
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 
 Plug 'Valloric/ListToggle'
 
 "Plug 'tmhedberg/SimpylFold'
 "Plug 'jistr/vim-nerdtree-tabs'
 
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 Plug 't9md/vim-choosewin'
 
 Plug 'Yggdroot/LeaderF'
@@ -154,8 +159,8 @@ let g:EasyMotion_leader_key = 'f' "修改leader键
 "=========================================================================theme
 "set background=dark
 "colorscheme molokai                 " 设置配色方案
-set background=light
-colorscheme solarized
+"set background=dark
+"colorscheme solarized
 
 
 "=======================================================================airline
@@ -171,24 +176,6 @@ let NERDTreeDirArrows = 1
 map ss :Grep  
 
 "========================================================================debug
-map <F5> :call CompileRunGcc()<CR> 
-func! CompileRunGcc()
-    exec "w"
-    if &filetype == 'c'
-        exec "!g++ % -o %<"
-        "exec "! ./%<"
-    elseif &filetype == 'cpp'
-        exec "!g++ % -o %<"
-        "exec "! ./%<"
-    elseif &filetype == 'java' 
-        exec "!javac %" 
-        "exec "!java %<"
-	elseif &filetype == 'python'
-		exec "!python3 %"
-    elseif &filetype == 'sh'
-        :!./%
-    endif
-endfunc
 
 set makeprg=mingw32-make  "编译的命令和编译器设置
 
@@ -206,29 +193,29 @@ let g:tagbar_ctags_bin = 'ctags'
 let g:tagbar_width = 30
 
 "========================================================================ycm
-let g:ycm_confirm_extra_conf=0 "关闭加载.ycm_extra_conf.py提示
-
-"let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 基于标签引擎
-let g:ycm_min_num_of_chars_for_completion=2 " 从第2个键入字符就开始罗列匹配项
-let g:ycm_cache_omnifunc=0  " 禁止缓存匹配项,每次都重新生成匹配项
-let g:ycm_seed_identifiers_with_syntax=1    " 语法关键字补全
-"nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>    "force recomile with syntastic
-"nnoremap <leader>lo :lopen<CR> "open locationlist
-"nnoremap <leader>lc :lclose<CR>    "close locationlist
-inoremap <leader><leader> <C-x><C-o>
-"在注释输入中也能补全
-let g:ycm_complete_in_comments = 1
-"在字符串输入中也能补全
-let g:ycm_complete_in_strings = 1
-"注释和字符串中的文字也会被收入补全
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
-let g:ycm_key_invoke_completion = '<C-Space>'
-"python automation"
-"let g:ycm_python_binary_path = '/usr/bin/python3'
-let g:ycm_python_binary_path = 'python3'
-set completeopt-=preview
+"let g:ycm_confirm_extra_conf=0 "关闭加载.ycm_extra_conf.py提示
+"
+""let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 基于标签引擎
+"let g:ycm_min_num_of_chars_for_completion=2 " 从第2个键入字符就开始罗列匹配项
+"let g:ycm_cache_omnifunc=0  " 禁止缓存匹配项,每次都重新生成匹配项
+"let g:ycm_seed_identifiers_with_syntax=1    " 语法关键字补全
+""nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>    "force recomile with syntastic
+""nnoremap <leader>lo :lopen<CR> "open locationlist
+""nnoremap <leader>lc :lclose<CR>    "close locationlist
+"inoremap <leader><leader> <C-x><C-o>
+""在注释输入中也能补全
+"let g:ycm_complete_in_comments = 1
+""在字符串输入中也能补全
+"let g:ycm_complete_in_strings = 1
+""注释和字符串中的文字也会被收入补全
+"let g:ycm_collect_identifiers_from_comments_and_strings = 0
+"let g:ycm_key_invoke_completion = '<C-Space>'
+""python automation"
+""let g:ycm_python_binary_path = '/usr/bin/python3'
+"let g:ycm_python_binary_path = 'python3'
+"set completeopt-=preview
 
 let g:EasyMotion_leader_key = 'f' "修改leader键
 let g:ycm_error_symbol = '>>'
