@@ -148,6 +148,10 @@ Plug 'Valloric/ListToggle'
 Plug 't9md/vim-choosewin'
 
 Plug 'Yggdroot/LeaderF'
+
+Plug 'dkprice/vim-easygrep'
+
+Plug 'skywind3000/asyncrun.vim'
  
 " Initialize plugin system
 call plug#end()
