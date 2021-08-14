@@ -1,0 +1,72 @@
+"===================================================================plugin list
+" Specify a directory for plugins 
+call plug#begin('~/.vim/plugged')
+Plug 'Lokaltog/vim-easymotion' 
+"tab use
+"Plug 'ervandew/supertab'
+"mini buffer to show how many tab open
+"Plug 'fholgado/minibufexpl.vim'
+"fast to find a file in disk
+"Plug 'kien/ctrlp.vim'
+"check the syntax of the file which is saving
+"Plug 'scrooloose/syntastic'
+"bootom line of status of editing 
+Plug 'bling/vim-airline'
+"font of status line
+"Plug 'Lokaltog/powerline-fonts'
+"file tree
+Plug 'scrooloose/nerdtree'
+"show tags of file
+Plug 'majutsushi/tagbar'
+"jump in file to where you want to go
+"grep command
+Plug 'dkprice/vim-easygrep'
+"this is for auto pop match word
+"Plug 'vim-scripts/AutoComplPop'
+"change the same word at same time
+Plug 'terryma/vim-multiple-cursors'
+"auto finish the code"
+"Plug 'msanders/snipmate.vim'
+"Plug 'msanders/snipmate.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+"snipmate to load program part"
+"provides insert mode auto-completion for quotes, parens, brackets"
+Plug 'Raimondi/delimitMate'               
+"Plug 'davidhalter/jedi-vim'
+"theme"
+Plug 'tomasr/molokai' 
+Plug 'altercation/vim-colors-solarized'
+"indent
+Plug 'Yggdroot/indentLine'
+"highlight
+"Plug 'ngloss/vim-javascript'
+"Plug 'mxw/vim-jsx'
+"minibuffer
+"Plug 'jlanzarotta/bufexplorer'
+
+"Plug 'editorconfig/editorconfig-vim'
+Plug 'scrooloose/nerdcommenter'
+
+"Plug 'MarcWeber/vim-addon-manager'
+
+"Plug 'w0rp/ale'
+
+Plug 'Valloric/ListToggle'
+
+"Plug 'tmhedberg/SimpylFold'
+"Plug 'jistr/vim-nerdtree-tabs'
+
+"Plug 'Valloric/YouCompleteMe'
+Plug 't9md/vim-choosewin'
+
+Plug 'Yggdroot/LeaderF'
+
+Plug 'dkprice/vim-easygrep'
+
+Plug 'skywind3000/asyncrun.vim'
+
+" Initialize plugin system
+call plug#end()
+
+

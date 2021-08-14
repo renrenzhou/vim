@@ -1,162 +1,4 @@
 
-"help manual_doc
-
-"no bell in vim
-set noeb
-"no bell in gvim
-set vb t_vb=
-set nocompatible
-
-"disable tool bar
-set go=
-"encode set
-set encoding=utf-8
-set termencoding=utf-8
-set fileencoding=utf-8
-set fileencodings=ucs-bom,utf-8,chinese,cp936
-"set cc=80
-
-language messages zh_CN.utf-8
-
-filetype plugin on
-filetype indent on
-
-set hlsearch
-set mouse=a
-set ts=4  "tab width
-set softtabstop=4 "delete num when use backspace
-set shiftwidth=4 "indent space num
-"set expandtab 
-
-"set window size
-set lines=35 columns=120
-
-"set line number
-set rnu
-set number
-
-"font
-if has('win32')
-    "set guifont=Courier_New:h11:cANSI  " 设置字体 
-    "set guifont=Ubuntu_Mono_derivative_Powerlin:h12
-    "set guifont=Liberation Mono for Powerline:h10:cANSI
-elseif has('unix')
-	"set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 12
-	"set guifont=Source\ Code\ Pro\ for\ Powerline\ 11
-	set guifont=Source\ Code\ Pro\ 11
-	set linespace=0
-    "set guifont=Liberation\ Mono\ for\ Powerline\ 10
-endif
-
-"syntax
-syntax on                          " 语法高亮 
-
-set nobackup                       "从不备份 
-set autowrite                       "自动保存
-set cursorcolumn		   "高亮光标列
-set cursorline			   "高亮光标行
-set scrolloff=2			   "还有三行就开始翻滚，底部三行
-"set scroll=10                      "一次翻滚10行
-"set scrolljump=5                   "光标在底端，一次翻滚的行数
-set showtabline=2	            "总是显示标签栏
-set foldmethod=indent
-set foldlevel=99
-
-"copy and paste
-if has('win32')
-	vmap <C-c> "+y                    " 选中状态下 Ctrl+c 复制
-endif
-"nnoremap <M-F2> :g/^\s*$/d<CR>      "ALT-<F2> 去空行
-"nnoremap <C-F2> :vert diffsplit   "比较文件
-"""切换标签
-"map <F4> :tabs<CR>
-""""切换窗口
-"map <M-l> <C-w>l
-"map <M-h> <C-w>h
-"map <M-j> <C-w>j
-"map <M-k> <C-w>k
-
-"function key bounding
-nnoremap <space> za
-map <M-s> :split<CR>
-map <M-v> :vsplit<CR>
-
-"key binding
-
-nmap fw <Plug>(choosewin)
-
-"===================================================================plugin list
-" Specify a directory for plugins 
-call plug#begin('~/.vim/plugged')
-Plug 'Lokaltog/vim-easymotion' 
-"tab use
-"Plug 'ervandew/supertab'
-"mini buffer to show how many tab open
-"Plug 'fholgado/minibufexpl.vim'
-"fast to find a file in disk
-"Plug 'kien/ctrlp.vim'
-"check the syntax of the file which is saving
-"Plug 'scrooloose/syntastic'
-"bootom line of status of editing 
-Plug 'bling/vim-airline'
-"font of status line
-"Plug 'Lokaltog/powerline-fonts'
-"file tree
-Plug 'scrooloose/nerdtree'
-"show tags of file
-Plug 'majutsushi/tagbar'
-"jump in file to where you want to go
-"grep command
-Plug 'dkprice/vim-easygrep'
-"this is for auto pop match word
-"Plug 'vim-scripts/AutoComplPop'
-"change the same word at same time
-Plug 'terryma/vim-multiple-cursors'
-"auto finish the code"
-"Plug 'msanders/snipmate.vim'
-"Plug 'msanders/snipmate.vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-"snipmate to load program part"
-"provides insert mode auto-completion for quotes, parens, brackets"
-Plug 'Raimondi/delimitMate'               
-"Plug 'davidhalter/jedi-vim'
-"theme"
-Plug 'tomasr/molokai' 
-Plug 'altercation/vim-colors-solarized'
-"indent
-Plug 'Yggdroot/indentLine'
-"highlight
-"Plug 'ngloss/vim-javascript'
-"Plug 'mxw/vim-jsx'
-"minibuffer
-"Plug 'jlanzarotta/bufexplorer'
-
-"Plug 'editorconfig/editorconfig-vim'
-Plug 'scrooloose/nerdcommenter'
-
-"Plug 'MarcWeber/vim-addon-manager'
-
-"Plug 'w0rp/ale'
-
-Plug 'Valloric/ListToggle'
-
-"Plug 'tmhedberg/SimpylFold'
-"Plug 'jistr/vim-nerdtree-tabs'
-
-"Plug 'Valloric/YouCompleteMe'
-Plug 't9md/vim-choosewin'
-
-Plug 'Yggdroot/LeaderF'
-
-Plug 'dkprice/vim-easygrep'
-
-Plug 'skywind3000/asyncrun.vim'
- 
-" Initialize plugin system
-call plug#end()
-
-
 "=============================================================easymotion plugin
 let g:EasyMotion_leader_key = 'f' "修改leader键
 
@@ -265,14 +107,22 @@ let g:choosewin_overlay_enable = 1
 hi Normal  ctermfg=252 ctermbg=none
 
 "=====================================================================leaderf"
+let g:Lf_GtagsAutoGenerate=0
 nmap fr :LeaderfMru<CR>
 nmap fl :LeaderfLine<CR>
 nmap fb :LeaderfBufferAll<CR>
 nmap ff :LeaderfFile<CR>
-nmap fg :LeaderfLineAll<CR>
+"nmap fg :LeaderfLineAll<CR>
+nmap gs :Leaderf gtags  --all --result ctags-mod<CR>
+nmap gl :Leaderf gtags --current-buffer --result ctags-mod<CR>
 let g:Lf_WorkingDirectoryMode = 'Ac'
 let g:Lf_RootMarkers = ['.project']
-
+let g:Lf_WindowPosition='popup'
+let g:Lf_PreviewInPopup=1
+let g:Lf_Gtagslabel='native-pygments'
+let g:Lf_GtagsHigherThan6_6_2=0
+nmap gr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+nmap gd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
 
 ""
 hi Normal guifg=#2E3436 guibg=#EDEDED

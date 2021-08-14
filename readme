@@ -1,0 +1,6 @@
+edit .vimrc in ~, and add content
+"""
+source ~/.vimrc/src/settingrc
+source ~/.vimrc/src/plugrc
+source ~/.vimrc/src/plug_settingrc
+"""
