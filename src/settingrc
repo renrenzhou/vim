@@ -1,3 +1,7 @@
+
+let $GTAGSCONF='/usr/local/share/gtags/gtags.conf'
+let $GTAGSLABEL='native-pygments'
+
 "help manual_doc
 "no bell in vim
 set noeb
