@@ -29,7 +29,7 @@ set shiftwidth=4 "indent space num
 "set expandtab 
 
 "set window size
-set lines=35 columns=120
+"set lines=35 columns=120
 
 "set line number
 set rnu
